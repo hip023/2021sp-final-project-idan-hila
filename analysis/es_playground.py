@@ -38,7 +38,7 @@ if __name__ == '__main__':
     es = Elasticsearch()
 
     # IF YOU WANT TO LOAD DATA
-    # load_sample_data(es)
+    load_sample_data(es)
 
     # Retrieve a document
     res = es.get(index="text-2", id=2)
@@ -52,21 +52,24 @@ if __name__ == '__main__':
     print(search_res['hits'])
 
     # for a specific index
-    search_res2 = es.search(index="test-index", body={"query": {"match_all": {}}})
+    search_res2 = es.search(index="text-1", body={"query": {"match_all": {}}})
     print(search_res2['hits'])
+    # search_res2 = es.search(index="test-index", body={"query": {"match_all": {}}})
+    # print(search_res2['hits'])
 
     # DELETE A DOCUMENT
     # res = es.delete(index='megacorp', doc_type='employee', id=3)
 
-    # SAMPLE SEARCH
-    search_res = es.search(body={"query": {"match": {"text": "cookie"}}})
-    for hit in search_res['hits']['hits']:
-        print(hit['_source']['text'])
-        print(hit['_score'])
-        print('**********************')
+    # # SAMPLE SEARCH
+    # search_res = es.search(body={"query": {"match": {"text": "cookie", "type":"pdf"}}})
 
-
-    search_res2 = es.search(body={"query": {"match": {"text": "pset"}}})
+    # for hit in search_res['hits']['hits']:
+    #     print(hit['_source']['text'])
+    #     print(hit['_score'])
+    #     print('**********************')
+    #
+    # 
+    # search_res2 = es.search(body={"query": {"match": {"text": "pset"}}})
 
 
     print('done')

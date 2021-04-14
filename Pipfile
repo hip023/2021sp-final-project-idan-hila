@@ -5,7 +5,9 @@ name = "pypi"
 
 [packages]
 elasticsearch = "*"
-textract = "*"
+canvasapi = "*"
+environs = "*"
+pdfplumber = "*"
 
 [dev-packages]
 
