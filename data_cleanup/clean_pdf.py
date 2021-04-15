@@ -6,23 +6,15 @@ import re
 from typing import Union
 
 import pdfplumber
-from luigi import Parameter, Task, LocalTarget
-from luigi.format import Nop
+from luigi import Parameter, Task
 
 from data_cleanup.constants_characters import *
+from final_project.data_collection.tasks.canvas_task import DownloadCanvasPdf
+from final_project.data_collection.tasks.output import TargetOutput
 
 FILE_PATH_TYPE = Union[str, os.PathLike]
 DEFAULT_CLEAN_PDF_DIRECTORY = "clean_pdfs"
 DEFAULT_PDF_DIRECTORY = "lectures"
-
-
-class MockLocalPath(Task):
-    pdf_file = Parameter()
-    file_directory = Parameter()
-
-    def output(self) -> LocalTarget:
-        local_file_path = os.path.join(self.file_directory, self.pdf_file)
-        return LocalTarget(local_file_path, format=Nop)
 
 
 class CleanPdf(Task):
@@ -34,18 +26,15 @@ class CleanPdf(Task):
         """
         A locally downloaded PDF file
         """
-        # return DownloadCanvasPdf(pdf_file=self.pdf_file,
-        #                          output_dir=self.file_directory)
-        return self.clone(MockLocalPath)
+        return DownloadCanvasPdf(pdf_file=self.pdf_file, output_dir=self.file_directory)
 
-    def output(self):
-        """
-        :return: a TargetOutput object to saved txt file
-        """
+    output = TargetOutput("{task.get_clean_txt_path}")
+
+    @property
+    def get_clean_txt_path(self):
         clean_name = self.pdf_file.split(os.extsep, 1)[0] + ".txt"
         local_file_path = os.path.join(self.save_directory, clean_name)
-
-        return LocalTarget(local_file_path)
+        return local_file_path
 
     def run(self):
         """
