@@ -8,7 +8,7 @@ from final_project.data_collection.tasks.output import TargetOutput
 
 
 class DownloadCanvasPdf(Task):
-    PDF_MODULE = 'Lecture'
+    canvas_pdf_module = Parameter(default='Lecture')
     output_dir = Parameter(default='lectures')
     pdf_file = Parameter()
 
@@ -21,7 +21,7 @@ class DownloadCanvasPdf(Task):
     output = TargetOutput('{task.output_dir}/{task.pdf_file}')
 
     def get_pdf_module_item(self, api: CanvasApiAdapter) ->ModuleItem:
-        lecture_module = next(filter(lambda x: x.name == self.PDF_MODULE, api.course.get_modules()))
+        lecture_module = next(filter(lambda x: x.name == self.canvas_pdf_module, api.course.get_modules()))
         for item in lecture_module.get_module_items():
             if item.title == self.pdf_file:
                 return item

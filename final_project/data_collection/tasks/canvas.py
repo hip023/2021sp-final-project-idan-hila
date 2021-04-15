@@ -102,28 +102,3 @@ class CanvasApiAdapter:
         return assignment_name, quiz_name
 
 
-class DueDatePassed(Exception):
-    pass
-
-
-def get_github_commit_url(repo):
-    url = GITHUB_COMMIT_URL_FORMAT.format(
-        env("GITHUB_CLASSROOM"),
-        os.path.basename(repo.working_dir),
-        repo.head.commit.hexsha,
-    )
-    return url
-
-
-class DetectNonTravisGitSubmit(Exception):
-    pass
-
-
-
-def get_bool_value_id(question: QuizSubmissionQuestion, answer_bool: bool) -> int:
-    answer_gen = (
-        answer["id"]
-        for answer in question.answers
-        if str(answer_bool) == answer["text"]
-    )
-    return next(answer_gen)
