@@ -8,6 +8,8 @@ elasticsearch = "*"
 canvasapi = "*"
 environs = "*"
 pdfplumber = "*"
+luigi = "*"
+task = "*"
 
 [dev-packages]
 
