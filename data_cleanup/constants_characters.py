@@ -1,0 +1,2 @@
+ASCII_VALUE_RANGE = "\x00-\x7F"
+NULL_ASCII = "\000"
