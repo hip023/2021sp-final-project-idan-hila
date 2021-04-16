@@ -21,8 +21,8 @@ DEFAULT_PDF_DIRECTORY = "lectures"
 
 class CleanPdf(Task):
     pdf_file = Parameter()
-    file_directory = DEFAULT_PDF_DIRECTORY
-    save_directory = DEFAULT_CLEAN_PDF_DIRECTORY
+    file_directory = Parameter(DEFAULT_PDF_DIRECTORY)
+    save_directory = Parameter(DEFAULT_CLEAN_PDF_DIRECTORY)
 
     def requires(self):
         """
