@@ -1,13 +1,12 @@
 import unittest
 
 import os
-from contextlib import contextmanager
-from tempfile import TemporaryDirectory
 from unittest import mock
 import requests_mock
 from final_project.data_collection.tasks.download_data.canvas_task import DownloadCanvasPdf
 
 from tests.luigi_utils import LuigiTestCase
+from tests.other_utils import inside_tempdir
 
 FAKE_ENV = {
     "COURSE_NAME": "my course name",
@@ -17,31 +16,6 @@ FAKE_ENV = {
     "TRAVIS_BUILD_WEB_URL": "travis_url",
     "TRAVIS_BRANCH": "travis_url",
 }
-
-
-@contextmanager
-def inside_dir(dirpath):
-    """
-    Execute code from inside the given directory
-    :param dirpath: String, path of the directory the command is being run.
-    """
-    old_path = os.getcwd()
-    try:
-        os.chdir(dirpath)
-        yield
-    finally:
-        os.chdir(old_path)
-
-
-@contextmanager
-def inside_tempdir():
-    """
-    Execute code from inside the given directory
-    :param dirpath: String, path of the directory the command is being run.
-    """
-    with TemporaryDirectory() as tmpdir:
-        with inside_dir(tmpdir):
-            yield
 
 
 @mock.patch.dict(
@@ -113,7 +87,7 @@ class TestCanvas(LuigiTestCase):
             self.register_uri(m, self.mocked_modules)
             self.register_uri(m, self.mocked_module_items)
             self.register_uri(m, self.mocked_file_download)
-            assert self.run_locally_split("DownloadCanvasPdf --pdf-file my_pdf.pdf")
+            assert self.run_locally_split(f"{DownloadCanvasPdf.__name__} --pdf-file my_pdf.pdf")
             file_path = os.path.join("lectures/my_pdf.pdf")
             self.assertTrue(os.path.isfile(file_path))
             with open(file_path) as downloaded_file:
