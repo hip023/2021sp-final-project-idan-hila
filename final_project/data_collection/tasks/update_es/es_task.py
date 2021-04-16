@@ -12,7 +12,7 @@ class UpdatePdfEs(CopyToIndex):
     doc_type = "pdf"
 
     def requires(self):
-        return CleanPdf(pdf_file=self.pdf_file)
+        return self.clone(CleanPdf)
 
     def docs(self):
         with self.input().open() as file:

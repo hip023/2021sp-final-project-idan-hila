@@ -9,7 +9,9 @@ import pdfplumber
 from luigi import Parameter, Task
 
 from final_project.data_collection.tasks.data_cleanup.constants_characters import *
-from final_project.data_collection.tasks.download_data.canvas_task import DownloadCanvasPdf
+from final_project.data_collection.tasks.download_data.canvas_task import (
+    DownloadCanvasPdf,
+)
 from final_project.data_collection.tasks.output import TargetOutput
 
 FILE_PATH_TYPE = Union[str, os.PathLike]
@@ -19,8 +21,8 @@ DEFAULT_PDF_DIRECTORY = "lectures"
 
 class CleanPdf(Task):
     pdf_file = Parameter()
-    file_directory = DEFAULT_PDF_DIRECTORY
-    save_directory = DEFAULT_CLEAN_PDF_DIRECTORY
+    file_directory = Parameter(DEFAULT_PDF_DIRECTORY)
+    save_directory = Parameter(DEFAULT_CLEAN_PDF_DIRECTORY)
 
     def requires(self):
         """
@@ -45,18 +47,23 @@ class CleanPdf(Task):
 
         with pdfplumber.open(self.input().path) as pdf:
             raw_texts = "\n".join([page.extract_text() for page in pdf.pages])
-            texts = transform_camel_case_to_space(raw_texts)
+            texts = get_text_without_non_ascii_chars(raw_texts)
 
         with open(self.output().path, mode="w") as f:
             f.write(texts)
 
 
-def transform_camel_case_to_space(text: str):
+def get_text_without_non_ascii_chars(
+        text: str,
+) -> str:
     """
-    :param text: a potentially camelCase text representation
-    :return: a text without
+    :param text: a string containing non-ascii values
+    :return: a text with only ascii characters
     """
     clean_text = re.sub(rf"[^{ASCII_VALUE_RANGE}]+", " ", text)
     clean_text = re.sub(rf"{NULL_ASCII}+", " ", clean_text)
+
+    # remove duplicated spaces resulted from multiple non-ascii values
     text_without_duplicated_spaces = re.sub("\s+", " ", clean_text)
+
     return text_without_duplicated_spaces
