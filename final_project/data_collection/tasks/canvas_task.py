@@ -14,18 +14,12 @@ class DownloadCanvasPdf(Task):
 
     def run(self):
         api = CanvasApiAdapter()
-        pdf_module_item = self.get_pdf_module_item(api)
+        pdf_module_item = api.get_module_item(self.canvas_pdf_module, self.pdf_file)
         self.output().makedirs()
         api.course.get_file(pdf_module_item.content_id).download(self.output().path)
 
     output = TargetOutput('{task.output_dir}/{task.pdf_file}')
 
-    def get_pdf_module_item(self, api: CanvasApiAdapter) ->ModuleItem:
-        lecture_module = next(filter(lambda x: x.name == self.canvas_pdf_module, api.course.get_modules()))
-        for item in lecture_module.get_module_items():
-            if item.title == self.pdf_file:
-                return item
-        raise Exception(f'could not find pdf: {self.pdf_file}. '
-                        f'Found {[item.title for item in lecture_module.get_module_items()]}')
+
 
 
