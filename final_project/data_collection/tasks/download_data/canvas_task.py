@@ -3,7 +3,7 @@ import os
 from canvasapi.module import ModuleItem
 from luigi import  Parameter, Task
 
-from final_project.data_collection.tasks.canvas import CanvasApiAdapter
+from final_project.data_collection.tasks.download_data.canvas import CanvasApiAdapter
 from final_project.data_collection.tasks.output import TargetOutput
 
 

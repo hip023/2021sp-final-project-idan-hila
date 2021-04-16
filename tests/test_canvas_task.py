@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from tempfile import TemporaryDirectory
 from unittest import mock
 import requests_mock
-from final_project.data_collection.tasks.canvas_task import DownloadCanvasPdf
+from final_project.data_collection.tasks.download_data.canvas_task import DownloadCanvasPdf
 
 from tests.luigi_utils import LuigiTestCase
 
