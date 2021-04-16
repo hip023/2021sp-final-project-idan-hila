@@ -118,7 +118,3 @@ class TestCanvas(LuigiTestCase):
             self.assertTrue(os.path.isfile(file_path))
             with open(file_path) as downloaded_file:
                 self.assertEqual(downloaded_file.read(), '"THIS IS SPARTAAAAAAA"')
-
-
-if __name__ == "__main__":
-    unittest.main()
