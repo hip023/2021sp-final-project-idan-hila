@@ -8,8 +8,8 @@ from typing import Union
 import pdfplumber
 from luigi import Parameter, Task
 
-from data_cleanup.constants_characters import *
-from final_project.data_collection.tasks.canvas_task import DownloadCanvasPdf
+from final_project.data_collection.tasks.data_cleanup.constants_characters import *
+from final_project.data_collection.tasks.download_data.canvas_task import DownloadCanvasPdf
 from final_project.data_collection.tasks.output import TargetOutput
 
 FILE_PATH_TYPE = Union[str, os.PathLike]
