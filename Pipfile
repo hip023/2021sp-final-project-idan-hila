@@ -10,11 +10,11 @@ environs = "*"
 pdfplumber = "*"
 luigi = "*"
 task = "*"
-requests-mock = "*"
 
 [dev-packages]
 pytest = "*"
 pytest-cov = "*"
+requests-mock = "*"
 
 [requires]
 python_version = "3.8"

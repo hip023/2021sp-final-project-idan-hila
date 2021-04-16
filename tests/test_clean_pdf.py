@@ -12,7 +12,7 @@ from final_project.data_collection.tasks.data_cleanup.clean_pdf import (
     DEFAULT_CLEAN_PDF_DIRECTORY,
 )
 from tests.luigi_utils import LuigiTestCase
-from tests.test_canvas_task import inside_tempdir
+from tests.other_utils import inside_tempdir
 
 
 class TestCleanPdf(LuigiTestCase):
