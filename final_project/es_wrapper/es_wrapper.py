@@ -11,15 +11,15 @@ class ResultObject:
     def get_instance_from_dict(cls, search_results_dict: dict) -> ResultObject:
         hits = search_results_dict.get('hits')
         max_score = hits.get('max_score')
-        return [ResultObject(hit, max_score) for hit in hits]
+        return [ResultObject(hit, max_score) for hit in hits.get('hits')]
 
     def __init__(self, hit: dict, max_score: float):
-        self.file_name = hit.get('source').get('pdf_file')
+        self.file_name = hit.get('_source').get('pdf_file')
         self.score = hit.get('_score')
         self.norm_score = self.normalized_score(max_score)
 
     def normalized_score(self, max_score: float) -> float:
-        return 100 * self.score / max_score
+        return int(100 * self.score / max_score)
 
 
 @validate_string
