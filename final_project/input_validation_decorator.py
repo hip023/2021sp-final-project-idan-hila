@@ -1,3 +1,5 @@
+# TODO: add tests for this class
+
 from collections import Callable
 from functools import wraps
 
