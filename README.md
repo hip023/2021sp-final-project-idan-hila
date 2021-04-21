@@ -1,8 +1,8 @@
 # final_project
 
 
-use https://travis-ci.com/ to collect an md badge
+[![Build Status](https://travis-ci.com/hip023/2021sp-final-project-idan-hila.svg?token=ystyYsaTfZ7QgRPbwMt6&branch=master)](https://travis-ci.com/hip023/2021sp-final-project-idan-hila)
 
-use https://codeclimate.com/ to collect an md badge
+[![Maintainability](https://api.codeclimate.com/v1/badges/583ebed631fbfeb3be9f/maintainability)](https://codeclimate.com/github/hip023/2021sp-final-project-idan-hila/maintainability)
 
-use https://codeclimate.com/ to collect an md badge
+[![Test Coverage](https://api.codeclimate.com/v1/badges/583ebed631fbfeb3be9f/test_coverage)](https://codeclimate.com/github/hip023/2021sp-final-project-idan-hila/test_coverage)

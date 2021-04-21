@@ -23,14 +23,6 @@
   </head>
   <body>
   <div class="container">
-  {% if results|length > 0 %}
-      <td class="property-value-col">here are your awesome search results:</td>
-  {% endif %}
-      {% for result in results %}
-          <li>{{ result.file_name }}: score {{ result.norm_score }}%</li>
-    {% endfor %}
-</div>
-  <div class="container">
     <br/>
 	<div class="row justify-content-center">
                         <div class="col-12 col-md-10 col-lg-8">
@@ -54,5 +46,13 @@
                         <!--end of col-->
                     </div>
 
+</div>
+  <div class="container">
+  {% if results|length > 0 %}
+      <td class="property-value-col">here are your awesome search results:</td>
+  {% endif %}
+      {% for result in results %}
+          <li>{{ result.file_name }}: score {{ result.norm_score }}%</li>
+    {% endfor %}
 </div>
   </body>
