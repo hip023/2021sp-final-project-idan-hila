@@ -25,7 +25,10 @@ class ResultObject:
 @validate_string
 def get_es_results(search_query: str) -> dict:
     es = Elasticsearch()
-    return es.search(body={"query": {"match": {"text": search_query}}}, size=20)
+    results = es.search(body={"query": {"match": {"text": search_query}}}, size=20)
+    if len(results.get('hits').get('hits')) < 1:
+        results = es.search(body={"query": {"match": {"text": search_query.replace(" ", "")}}}, size=20)
+    return results
 
 
 # TODO: how to re-generate the links from canvas?
