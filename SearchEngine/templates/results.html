@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}{{block.super}} ScottBot Search Results {% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg p-3 mb-5">
+  <a class="navbar-brand ml-4" href="{% url 'Home' %}"><i class="fas fa-arrow-left fa-2x"></i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<div class="wrapper justify-content-end" >
+    <form action="{% url 'Result' %}" method="post">
+        {% csrf_token %}
+    <input type="text" placeholder="Do Another Search..." name="search">
+    <div class="search"></div>
+    </form>
+</div>
+</nav>
+
+<div class="container" style="margin-bottom: 85px;">
+  <div class="container d-flex">
+      <h4 class="navbar-text text-black">
+    Search Results for CSCI E-29 Content
+  </h4>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-3">
+      <h4 class="panel panel-blue text-center" >Lectures PDF</h4>
+        <div class="justify-content-center">
+          {% for result in pdf %}
+         <a href="" class="btn mt-3 w-100">{{ result.file_name }}:
+             <br>[match score: {{ result.norm_score }}% ]</a><br>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-3">
+      <h4  class="panel panel-blue text-center" >External Links</h4>
+      <div class="justify-content-center">
+         <div class="btn mt-3 w-100">coming soon</div><br>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-3">
+      <h4  class="panel panel-blue text-center" >Section Code</h4>
+      <div class="justify-content-center">
+         <div class="btn mt-3 w-100">coming soon</div><br>
+        </div>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-3">
+      <h4  class="panel panel-blue text-center" >Lectures Videos</h4>
+      <div class="justify-content-center">
+         <div class="btn mt-3 w-100">coming soon</div><br>
+        </div>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
