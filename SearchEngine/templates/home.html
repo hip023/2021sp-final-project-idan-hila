@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}{{block.super}} ScottBot Search Engine {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="center">
+<span id="typed" style="font-size:35px;"></span>
+    </div>
+</div>
+<div class="wrapper">
+    <form action="{% url 'Result' %}" method="post">
+        {% csrf_token %}
+    <input type="text" placeholder="Search..." name="search">
+    <div class="search"></div>
+    </form>
+</div>
+{% endblock content %}
