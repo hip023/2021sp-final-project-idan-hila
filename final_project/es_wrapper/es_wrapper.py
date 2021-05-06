@@ -1,21 +1,33 @@
 from __future__ import annotations
 
-from elasticsearch import Elasticsearch
+from typing import List
+
+import elasticsearch
 
 from ..input_validation_decorator import validate_string
 
 
-# TODO: add test here.
 class ResultObject:
+    """
+    A class to hold a readable structure for elasticsearch results
+    """
+
     @classmethod
-    def get_instance_from_dict(cls, search_results_dict: dict) -> ResultObject:
-        hits = search_results_dict.get('hits')
-        max_score = hits.get('max_score')
-        return [ResultObject(hit, max_score) for hit in hits.get('hits')]
+    def get_instance_from_dict(cls, search_results_dict: dict) -> List[ResultObject]:
+        """
+        A factory to create a lit of ResultObject instances
+        given an expected ES result dict
+        :param search_results_dict:
+        :return: List[ResultObject]
+        :raises: TypeError if max_score is none
+        """
+        hits = search_results_dict.get("hits")
+        max_score = hits.get("max_score")
+        return [ResultObject(hit, max_score) for hit in hits.get("hits")]
 
     def __init__(self, hit: dict, max_score: float):
-        self.file_name = hit.get('_source').get('pdf_file')
-        self.score = hit.get('_score')
+        self.file_name = hit.get("_source").get("pdf_file")
+        self.score = hit.get("_score")
         self.norm_score = self.normalized_score(max_score)
 
     def normalized_score(self, max_score: float) -> float:
@@ -24,15 +36,23 @@ class ResultObject:
 
 @validate_string
 def get_es_results(search_query: str) -> dict:
-    es = Elasticsearch()
+    """
+    :param search_query: required
+    :return:
+    :raises: NoneStringArgument if search_query is not a string
+    """
+    es = elasticsearch.Elasticsearch()
     results = es.search(body={"query": {"match": {"text": search_query}}}, size=20)
-    if len(results.get('hits').get('hits')) < 1:
-        results = es.search(body={"query": {"match": {"text": search_query.replace(" ", "")}}}, size=20)
+
+    # If no sufficient results for the search query, trying another attempt
+    # after space removal
+    if len(results.get("hits").get("hits")) < 1:
+        results = es.search(
+            body={"query": {"match": {"text": search_query.replace(" ", "")}}}, size=20
+        )
     return results
 
 
-# TODO: how to re-generate the links from canvas?
-# e.g. https://canvas.harvard.edu/courses/81475/files/11640194?module_item_id=856910
 def es_results_wrapper(search_query: str):
     search_results_dict = get_es_results(search_query)
     results = ResultObject.get_instance_from_dict(search_results_dict)

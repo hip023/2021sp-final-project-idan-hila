@@ -1,10 +1,12 @@
-import unittest
-
 import os
+import unittest
 from unittest import mock
-import requests_mock
-from final_project.data_collection.tasks.download_data.canvas_task import DownloadCanvasPdf
 
+import requests_mock
+
+from final_project.data_collection.tasks.download_data.canvas_task import (
+    DownloadCanvasPdf,
+)
 from tests.luigi_utils import LuigiTestCase
 from tests.other_utils import inside_tempdir
 
@@ -18,10 +20,7 @@ FAKE_ENV = {
 }
 
 
-@mock.patch.dict(
-    os.environ,
-    FAKE_ENV,
-)
+@mock.patch.dict(os.environ, FAKE_ENV)
 @requests_mock.Mocker()
 class TestCanvas(LuigiTestCase):
     mocked_courses = {
@@ -43,13 +42,7 @@ class TestCanvas(LuigiTestCase):
     mocked_module_items = {
         "method": "GET",
         "endpoint": "/courses/912/modules/122/items",
-        "data": [
-            {
-                "id": 1,
-                "title": "my_pdf.pdf",
-                "content_id": 96,
-            },
-        ],
+        "data": [{"id": 1, "title": "my_pdf.pdf", "content_id": 96}],
         "status_code": 200,
     }
 
@@ -87,7 +80,9 @@ class TestCanvas(LuigiTestCase):
             self.register_uri(m, self.mocked_modules)
             self.register_uri(m, self.mocked_module_items)
             self.register_uri(m, self.mocked_file_download)
-            assert self.run_locally_split(f"{DownloadCanvasPdf.__name__} --pdf-file my_pdf.pdf")
+            assert self.run_locally_split(
+                f"{DownloadCanvasPdf.__name__} --pdf-file my_pdf.pdf"
+            )
             file_path = os.path.join("lectures/my_pdf.pdf")
             self.assertTrue(os.path.isfile(file_path))
             with open(file_path) as downloaded_file:
