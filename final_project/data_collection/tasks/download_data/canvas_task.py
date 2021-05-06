@@ -1,15 +1,15 @@
 import os
 
 from canvasapi.module import ModuleItem
-from luigi import  Parameter, Task
+from luigi import Parameter, Task
 
 from final_project.data_collection.tasks.download_data.canvas import CanvasApiAdapter
 from final_project.data_collection.tasks.output import TargetOutput
 
 
 class DownloadCanvasPdf(Task):
-    canvas_pdf_module = Parameter(default='Lecture')
-    output_dir = Parameter(default='lectures')
+    canvas_pdf_module = Parameter(default="Lecture")
+    output_dir = Parameter(default="lectures")
     pdf_file = Parameter()
 
     def run(self):
@@ -18,8 +18,4 @@ class DownloadCanvasPdf(Task):
         self.output().makedirs()
         api.course.get_file(pdf_module_item.content_id).download(self.output().path)
 
-    output = TargetOutput('{task.output_dir}/{task.pdf_file}')
-
-
-
-
+    output = TargetOutput("{task.output_dir}/{task.pdf_file}")

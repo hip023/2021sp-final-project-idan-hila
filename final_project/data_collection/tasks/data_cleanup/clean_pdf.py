@@ -53,9 +53,7 @@ class CleanPdf(Task):
             f.write(texts)
 
 
-def get_text_without_non_ascii_chars(
-        text: str,
-) -> str:
+def get_text_without_non_ascii_chars(text: str,) -> str:
     """
     :param text: a string containing non-ascii values
     :return: a text with only ascii characters

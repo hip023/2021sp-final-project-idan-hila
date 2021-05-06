@@ -3,19 +3,15 @@ import datetime
 import json
 import os
 from contextlib import contextmanager
-from typing import Dict
-from typing import Optional
-from typing import Tuple
+from typing import Dict, Optional, Tuple
 
 from canvasapi import Canvas
 from canvasapi.assignment import Assignment
 from canvasapi.course import Course
 from canvasapi.module import ModuleItem
-from canvasapi.quiz import Quiz, QuizSubmissionQuestion
-from canvasapi.quiz import QuizSubmission
+from canvasapi.quiz import Quiz, QuizSubmission, QuizSubmissionQuestion
 from canvasapi.user import User
 from environs import Env
-
 
 env = Env()
 

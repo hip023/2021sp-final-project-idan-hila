@@ -7,9 +7,9 @@ from unittest import mock
 from luigi.parameter import MissingParameterException
 
 from final_project.data_collection.tasks.data_cleanup.clean_pdf import (
-    get_text_without_non_ascii_chars,
-    CleanPdf,
     DEFAULT_CLEAN_PDF_DIRECTORY,
+    CleanPdf,
+    get_text_without_non_ascii_chars,
 )
 from tests.luigi_utils import LuigiTestCase
 from tests.other_utils import inside_tempdir
@@ -52,10 +52,7 @@ class TestCleanPdf(LuigiTestCase):
     @mock.patch(
         "final_project.data_collection." "tasks.data_cleanup.clean_pdf.pdfplumber"
     )
-    def test_clean_pdf_writes_clean_file(
-        self,
-        mock_pdf_plumber,
-    ):
+    def test_clean_pdf_writes_clean_file(self, mock_pdf_plumber):
         """
         Test the correct write to file of clean output
         """
