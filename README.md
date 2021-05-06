@@ -3,8 +3,7 @@
 
 Final Project, Idan and Hila
 
-
-![ScottBot](https://github.com/hip023/2021sp-final-project-idan-hila/blob/assets/scottbot.jpg)
+<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/read_me/assets/scottbot.jpg?raw=true" alt="ScottBot" width="400"/>
 
 [![Build Status](https://travis-ci.com/hip023/2021sp-final-project-idan-hila.svg?token=ystyYsaTfZ7QgRPbwMt6&branch=master)](https://travis-ci.com/hip023/2021sp-final-project-idan-hila)
 
@@ -17,4 +16,33 @@ Link to video: https://www.youtube.com/watch?v=g24RzWvGmZU&ab_channel=HilaPazHer
 
 Link to presentation: https://docs.google.com/presentation/d/1zoreOJfT8UlSWi5rYZbTVBS6YEZwn23axqGlHxx5LeE/edit?usp=sharing 
 
-![UML](https://github.com/hip023/2021sp-final-project-idan-hila/blob/assets/UML.png)
+<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/read_me/assets/UML.png?raw=true" alt="UML" width="500"/>
+
+
+## Manual: Use It Yourself!
+***
+#### STEP 1: Install Elasticsearch
+
+1.1 Go to: https://www.elastic.co/downloads/elasticsearch and download the proper version
+
+1.2 Extract the files locally and run bin/elasticsearch
+
+#### STEP 2: Update template.env file
+Go to template.env and update secret keys
+* hint: use this to use django secret key generator: https://djecrety.ir/
+
+#### STEP 3: Run Luigi Pipeline
+from your shell, run: 
+
+```
+pipenv run python -m final_project
+```
+
+#### STEP 4: Activate Django
+from your shell, run:
+
+```
+cd SearchEngine
+pipenv run python manage.py runserver 
+```
+
