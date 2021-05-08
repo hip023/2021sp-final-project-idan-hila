@@ -3,7 +3,7 @@
 
 Final Project, Idan and Hila
 
-<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/master/assets/scottbot.jpg" alt="ScottBot" width="400"/>
+<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/master/assets/scottbot.jpg?raw=true" alt="ScottBot" width="300"/>
 
 [![Build Status](https://travis-ci.com/hip023/2021sp-final-project-idan-hila.svg?token=ystyYsaTfZ7QgRPbwMt6&branch=master)](https://travis-ci.com/hip023/2021sp-final-project-idan-hila)
 
