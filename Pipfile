@@ -11,6 +11,7 @@ pdfplumber = "*"
 luigi = "*"
 task = "*"
 django = "*"
+gitpython = "*"
 
 [dev-packages]
 pytest = "*"
