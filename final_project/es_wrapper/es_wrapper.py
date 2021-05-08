@@ -26,11 +26,20 @@ class ResultObject:
         return [ResultObject(hit, max_score) for hit in hits.get("hits")]
 
     def __init__(self, hit: dict, max_score: float):
+        """
+        :param hit: dict of returned results from elasticsearch
+        :param max_score: the maximal matching score for the search query
+        """
         self.file_name = hit.get("_source").get("pdf_file")
         self.score = hit.get("_score")
         self.norm_score = self.normalized_score(max_score)
 
     def normalized_score(self, max_score: float) -> float:
+        """
+        Normalizes the highest score to 100% and accordingly the other scores
+        :param max_score: the maximal matching score for the search query
+        :return: normalized score for the given result
+        """
         return int(100 * self.score / max_score)
 
 
@@ -53,7 +62,12 @@ def get_es_results(search_query: str) -> dict:
     return results
 
 
-def es_results_wrapper(search_query: str):
+def es_results_wrapper(search_query: str) -> List[ResultObject]:
+    """
+    :param search_query:
+    :return: a list of ResultObject, each to align with a single elasticsearch result
+    for the given query
+    """
     search_results_dict = get_es_results(search_query)
     results = ResultObject.get_instance_from_dict(search_results_dict)
 
