@@ -20,6 +20,9 @@ DEFAULT_PDF_DIRECTORY = "lectures"
 
 
 class CleanPdf(Task):
+    """
+    A Luigi task to clean raw PDF files downloaded from Canvas
+    """
     pdf_file = Parameter()
     file_directory = Parameter(DEFAULT_PDF_DIRECTORY)
     save_directory = Parameter(DEFAULT_CLEAN_PDF_DIRECTORY)

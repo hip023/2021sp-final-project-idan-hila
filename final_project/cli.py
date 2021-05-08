@@ -9,6 +9,9 @@ def main():
 
 
 def update_lectures():
+    """
+    Runner for luigi tasks for all given PDF files in the course
+    """
     lectures = [item.title for item in CanvasApiAdapter().get_module_items("Lecture")]
     tasks = [UpdatePdfEs(pdf_file=lecture) for lecture in lectures]
     build(tasks, local_scheduler=True)

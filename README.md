@@ -3,7 +3,7 @@
 
 Final Project, Idan and Hila
 
-<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/read_me/assets/scottbot.jpg?raw=true" alt="ScottBot" width="400"/>
+<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/master/assets/scottbot.jpg?raw=true" alt="ScottBot" width="300"/>
 
 [![Build Status](https://travis-ci.com/hip023/2021sp-final-project-idan-hila.svg?token=ystyYsaTfZ7QgRPbwMt6&branch=master)](https://travis-ci.com/hip023/2021sp-final-project-idan-hila)
 
@@ -16,7 +16,7 @@ Link to video: https://www.youtube.com/watch?v=g24RzWvGmZU&ab_channel=HilaPazHer
 
 Link to presentation: https://docs.google.com/presentation/d/1zoreOJfT8UlSWi5rYZbTVBS6YEZwn23axqGlHxx5LeE/edit?usp=sharing 
 
-<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/read_me/assets/UML.png?raw=true" alt="UML" width="500"/>
+<img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/master/assets/UML.png?raw=true" alt="UML" width="500"/>
 
 
 ## Manual: Use It Yourself!

@@ -13,6 +13,10 @@ def homepage(request):
 
 
 def results(request):
+    """
+    :param request: an HTTP post request to obtain elasticsearch results
+    :return: rendering of result template page to display the results of the search
+    """
     if request.method == "POST":
         query = request.POST.get('search')
         if query:
