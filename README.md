@@ -1,7 +1,7 @@
 # CSCI E-29: ScottBot 
 ***
 
-Final Project, Idan and Hila
+Final Project, Idan Nikritin (idannik) and Hila Paz Herszfang (hip023)
 
 <img src="https://github.com/hip023/2021sp-final-project-idan-hila/blob/master/assets/scottbot.jpg?raw=true" alt="ScottBot" width="300"/>
 
@@ -11,6 +11,8 @@ Final Project, Idan and Hila
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/583ebed631fbfeb3be9f/test_coverage)](https://codeclimate.com/github/hip023/2021sp-final-project-idan-hila/test_coverage)
 
+
+Link to Sphinx Documentation: https://scottbot.readthedocs.io/en/latest/index.html
 
 Link to video: https://www.youtube.com/watch?v=g24RzWvGmZU&ab_channel=HilaPazHerszfang
 
