@@ -13,6 +13,8 @@ before_script: # code coverage tool
    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
    - chmod +x ./cc-test-reporter
    - ./cc-test-reporter before-build
+   - git submodule add https://github.com/hip023/2021sp-pset-5-hip023 pset_5
+
 script:
   - pytest --cov-report xml --cov-report term
 after_script:
