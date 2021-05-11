@@ -12,6 +12,7 @@ luigi = "*"
 task = "*"
 django = "*"
 gitpython = "*"
+sphinx-rtd-theme = "*"
 
 [dev-packages]
 pytest = "*"
