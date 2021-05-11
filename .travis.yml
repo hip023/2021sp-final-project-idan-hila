@@ -16,7 +16,7 @@ before_script: # code coverage tool
 script:
   - pytest --cov-report xml --cov-report term
   - make -C docs/ html
-  - touch docs/build/html/.nojekyll
+  - touch docs/_build/html/.nojekyll
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
@@ -28,7 +28,7 @@ deploy:
   verbose: true
   token: $GITHUB_TOKEN
   edge: true
-  local_dir: ./docs/build/html/
+  local_dir: ./docs/_build/html/
   keep_history: true
 - provider: script
   skip_cleanup: true
