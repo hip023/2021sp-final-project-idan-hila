@@ -173,6 +173,7 @@ def get_assignment_comment(quiz_submission: QuizSubmission):
     git_client = Repo('.')
     git_information = {
         "hexsha": git_client.head.commit.hexsha[:8],
+        "auto_generated_doc_link": "https://hip023.github.io/2021sp-final-project-idan-hila/index.html",
         "submitted_from": git_client.remotes.origin.url,
         "dt": git_client.head.commit.committed_datetime.isoformat(),
         "branch": Env().str("TRAVIS_BRANCH", None),
