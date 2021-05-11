@@ -5,13 +5,14 @@ Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
-    final_project.data_collection.tasks
+   final_project.data_collection.tasks
 
 Module contents
 ---------------
 
 .. automodule:: final_project.data_collection
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:

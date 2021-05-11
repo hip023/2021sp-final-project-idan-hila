@@ -2,6 +2,6 @@ conftest module
 ===============
 
 .. automodule:: conftest
-    :members:
-    :undoc-members:
-    :show-inheritance:
+   :members:
+   :undoc-members:
+   :show-inheritance:
