@@ -34,4 +34,4 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-  script: pipenv run python -m final_project && pipenv run python -m submission
+  script: pipenv run python -m submission
